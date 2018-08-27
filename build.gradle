@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group 'test'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.2.0'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.2.0'
+    compile group: 'net.serenity-bdd', name: 'serenity-core', version: '1.9.36'
+    compile group: 'net.serenity-bdd', name: 'serenity-junit', version: '1.9.36'
+}
+
+tasks.withType(Test) {
+    systemProperty 'webdriver.driver', System.getProperty('webdriver.driver', 'chrome')
+}
